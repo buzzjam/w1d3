@@ -1,14 +1,17 @@
-function countLetters(input){
-  var splitLetters = input.split(" ").join("");
+function countLetters(input) {
+  var splitLetters = input.split("");
   var obj = {}
 
   for (var i = 0; i < splitLetters.length; i++) {
     if (splitLetters.includes(splitLetters[i])) {
       var inputLetter = splitLetters[i];
       if (!(inputLetter in obj)) {
-        obj[inputLetter] = 1
+        if ((inputLetter !== " ")) {
+          obj[inputLetter] = [];
+          obj[inputLetter].push(i);
+        }
       } else {
-        obj[inputLetter] += 1
+        obj[inputLetter].push(i);
       }
     }
   }
